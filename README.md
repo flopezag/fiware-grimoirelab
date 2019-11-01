@@ -33,6 +33,54 @@ your browser and go to the corresponding url http://127.0.0.1:5601
 
 ### Kubernetes
 
+## create a namespace
+
+```console
+kubectl create -f namespace.yaml
+```
+
+view available namespaces for in your cluster:
+
+```console
+kubectl get namespaces
+```
+
+## create a service
+
+```console
+kubectl create -f service.yaml
+```
+
+view the service and its corresponding information:
+
+```console
+kubectl get services -n fiware-grimoirelab
+```
+
+## create the deployment
+
+```console
+kubectl create -f deployment.yaml
+```
+
+view deployment:
+
+```console
+kubectl get deployment fiware-grimoirelab -n fiware-grimoirelab
+```
+
+to deploy a new version:
+
+```console
+kubectl apply -f deployment.yaml
+```
+
+rollout the deployment:
+
+```console
+kubectl rollout undo deployment/fiware-grimoirelab --namespace fiware-grimoirelab
+```
+
 ## License
 
 FIWARE deployment of the Grimoirelab is licensed under APACHE License 2.0

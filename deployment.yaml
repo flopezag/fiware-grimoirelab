@@ -1,0 +1,35 @@
+apiVersion: apps/v1 
+# create deployment
+kind: Deployment
+metadata:
+  name: fiware-grimoirelab
+  namespace: fiware-grimoirelab
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: fiware-grimoirelab
+  template:
+    metadata:
+      labels:
+        app: fiware-grimoirelab
+    spec:
+      containers:
+      - name: fiware-grimoirelab
+        image: grimoirelab/full:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5601
+        volumeMounts:
+        - name: credentials
+          mountPath: /override.cfg
+        - name: projects
+          mountPath: /projects.json
+      # volumes
+      volumes:
+        - name: credentials
+          hostPath:
+            path: /Users/harpreetsingh/Desktop/workplace/fiware-grimoirelab/conf/credentials.cfg
+        - name: projects
+          hostPath:
+            path: /Users/harpreetsingh/Desktop/workplace/fiware-grimoirelab/conf/projects.json

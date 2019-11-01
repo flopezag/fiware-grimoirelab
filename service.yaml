@@ -1,0 +1,14 @@
+apiVersion: v1
+# create service
+kind: Service
+metadata:
+  name: fiware-grimoirelab
+  namespace: fiware-grimoirelab
+spec:
+  selector:
+    app: fiware-grimoirelab
+  ports:
+  - protocol: TCP
+    port: 5601
+    targetPort: 5601
+  type: NodePort
