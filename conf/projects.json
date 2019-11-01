@@ -1,0 +1,223 @@
+{
+    "FIWARE Catalog": {
+        "pipermail": [
+            "https://lists.fiware.org/private/fiware-tech-help/"
+        ]
+    },
+    "Orion Context Broker": {
+        "git": [
+            "https://github.com/telefonicaid/fiware-orion/"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/fiware-orion/"
+        ]
+    },
+    "STH Comet": {
+        "git": [
+            "https://github.com/telefonicaid/fiware-sth-comet/"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/fiware-sth-comet/"
+        ]
+    },
+    "Cygnus": {
+        "git": [
+            "https://github.com/telefonicaid/fiware-cygnus"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/fiware-cygnus"
+        ]
+    },
+    "QuantumLeap": {
+        "git": [
+            "https://github.com/smartsdk/ngsi-timeseries-api/"
+        ],
+        "github": [
+            "https://github.com/smartsdk/ngsi-timeseries-api/"
+        ]
+    },
+    "Draco": {
+        "git": [
+            "https://github.com/ging/fiware-draco"
+        ],
+        "github": [
+            "https://github.com/ging/fiware-draco"
+        ]
+    },
+    "IoT Agent for JSON": {
+        "git": [
+            "https://github.com/telefonicaid/iotagent-json"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/iotagent-json"
+        ]
+    },
+    "IoT Agent for LWM2M": {
+        "git": [
+            "https://github.com/telefonicaid/lightweightm2m-iotagent"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/lightweightm2m-iotagent"
+        ]
+    },
+    "IoT Agent for Ultralight": {
+        "git": [
+            "https://github.com/telefonicaid/iotagent-ul"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/iotagent-ul"
+        ]
+    },
+    "IoT Agent for LoRaWAN": {
+        "git": [
+            "https://github.com/Atos-Research-and-Innovation/IoTagent-LoRaWAN"
+        ],
+        "github": [
+            "https://github.com/Atos-Research-and-Innovation/IoTagent-LoRaWAN"
+        ]
+    },
+    "IoT Agent for OPC-UA": {
+        "git": [
+            "https://github.com/Engineering-Research-and-Development/iotagent-opcua"
+        ],
+        "github": [
+            "https://github.com/Engineering-Research-and-Development/iotagent-opcua"
+        ]
+    },
+    "IoT Agent for Sigfox": {
+        "git": [
+            "https://github.com/telefonicaid/sigfox-iotagent"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/sigfox-iotagent"
+        ]
+    },
+    "IoT Agent library": {
+        "git": [
+            "https://github.com/telefonicaid/iotagent-node-lib/"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/iotagent-node-lib/"
+        ]
+    },
+    "Fast RTPS": {
+        "git": [
+            "https://github.com/eProsima/Fast-RTPS"
+        ],
+        "github": [
+            "https://github.com/eProsima/Fast-RTPS"
+        ]
+    },
+    "Micro XRCE-DDS": {
+        "git": [
+            "https://github.com/eProsima/Micro-XRCE-DDS"
+        ],
+        "github": [
+            "https://github.com/eProsima/Micro-XRCE-DDS"
+        ]
+    },
+    "OpenMTC": {
+        "git": [
+            "https://github.com/OpenMTC/OpenMTC"
+        ],
+        "github": [
+            "https://github.com/OpenMTC/OpenMTC"
+        ]
+    },
+    "FIROS": {
+        "git": [
+            "https://github.com/iml130/firos"
+        ],
+        "github": [
+            "https://github.com/iml130/firos"
+        ]
+    },
+    "Cosmos": {
+        "git": [
+            "https://github.com/ging/fiware-cosmos"
+        ],
+        "github": [
+            "https://github.com/ging/fiware-cosmos"
+        ]
+    },
+    "FogFlow": {
+        "git": [
+            "https://github.com/smartfog/fogflow"
+        ],
+        "github": [
+            "https://github.com/smartfog/fogflow"
+        ]
+    },
+    "Perseo": {
+        "git": [
+            "https://github.com/telefonicaid/perseo-core/"
+        ],
+        "github": [
+            "https://github.com/telefonicaid/perseo-core/"
+        ]
+    },
+    "Keyrock Identity Management": {
+        "git": [
+            "https://github.com/ging/fiware-idm"
+        ],
+        "github": [
+            "https://github.com/ging/fiware-idm"
+        ]
+    },
+    "Wilma PEP Proxy": {
+        "git": [
+            "https://github.com/ging/fiware-pep-proxy"
+        ],
+        "github": [
+            "https://github.com/ging/fiware-pep-proxy"
+        ]
+    },
+    "AuthZForce PDP/PAP": {
+        "git": [
+            "https://github.com/authzforce/server"
+        ],
+        "github": [
+            "https://github.com/authzforce/server"
+        ]
+    },
+    "CKAN extensions": {
+        "git": [
+            "https://github.com/conwetlab/FIWARE-CKAN-Extensions"
+        ],
+        "github": [
+            "https://github.com/conwetlab/FIWARE-CKAN-Extensions"
+        ]
+    },
+    "Biz Framework": {
+        "git": [
+            "https://github.com/FIWARE-TMForum/Business-API-Ecosystem"
+        ],
+        "github": [
+            "https://github.com/FIWARE-TMForum/Business-API-Ecosystem"
+        ]
+    },
+    "Idra": {
+        "git": [
+            "https://github.com/OPSILab/Idra"
+        ],
+        "github": [
+            "https://github.com/OPSILab/Idra"
+        ]
+    },
+    "APInf": {
+        "git": [
+            "https://github.com/apinf/platform"
+        ],
+        "github": [
+            "https://github.com/apinf/platform"
+        ]
+    },
+    "ScorpioBroker": {
+        "git": [
+            "https://github.com/ScorpioBroker/ScorpioBroker"
+        ],
+        "github": [
+            "https://github.com/ScorpioBroker/ScorpioBroker"
+        ]
+    }
+}
