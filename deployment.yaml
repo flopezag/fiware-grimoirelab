@@ -22,14 +22,10 @@ spec:
         - containerPort: 5601
         volumeMounts:
         - name: credentials
-          mountPath: /override.cfg
+          mountPath: ./conf/override.cfg
         - name: projects
           mountPath: /projects.json
       # volumes
       volumes:
         - name: credentials
-          hostPath:
-            path: /Users/harpreetsingh/Desktop/workplace/fiware-grimoirelab/conf/credentials.cfg
         - name: projects
-          hostPath:
-            path: /Users/harpreetsingh/Desktop/workplace/fiware-grimoirelab/conf/projects.json
