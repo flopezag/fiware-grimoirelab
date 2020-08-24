@@ -1,0 +1,89 @@
+###############################################
+# Install Docker Engine
+###############################################
+- name: Update APT cache
+  apt:
+    update_cache: yes
+
+- name: Upgrade packages
+  apt:
+    upgrade: dist
+
+- name: Install apt-transport-https, ca-certificates, software-properties-common, ntp, and ppa-purge
+  apt:
+    name: ['apt-transport-https', 'ca-certificates', 'software-properties-common', 'ntp', 'ppa-purge']
+    update_cache: yes
+    state: present
+
+- name: Download gpg key
+  get_url:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    dest: /home/ubuntu/gpg
+    mode: 0440
+
+- name: Add apt key
+  command: apt-key add /home/ubuntu/gpg
+
+- name: Apt key fingerprint
+  command: apt-key fingerprint 0EBFCD88
+
+- name: Check lsb_release
+  command: lsb_release -cs
+  register: lsb_rel
+
+- name: Check uname -s
+  command: uname -s
+  register: uname_s
+
+- name: Check uname -m
+  command: uname -m
+  register: uname_m
+
+- debug:
+    msg: "{{ lsb_rel.stdout }}"
+
+- debug:
+    msg: "{{ uname_s.stdout }}"
+
+- debug:
+    msg: "{{ uname_m.stdout }}"
+
+- name: Add apt-key repository
+  command: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu "{{ lsb_rel.stdout }}" stable"
+
+- name: Update repositories cache
+  apt:
+    update_cache: yes
+
+- name: Install docker-ce
+  apt:
+    name: ['docker-ce']
+    update_cache: yes
+    state: present
+
+- name: Install docker-compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-{{ uname_s.stdout }}-{{ uname_m.stdout }}
+    dest: /usr/local/bin/docker-compose
+    mode: 0440
+
+# change permission to a file
+- name: Changing perm of "/usr/local/bin/docker-compose", adding "+x"
+  file: dest=/usr/local/bin/docker-compose mode=a+x
+
+- name: Delete unused files
+  file: path=/home/ubuntu/gpg state=absent
+
+- name: Check docker version
+  command: docker -v
+  register: docker
+
+- name: Check docker-compose version
+  command: docker-compose -v
+  register: docker_compose
+
+- debug:
+    msg: "{{ docker.stdout }}"
+
+- debug:
+    msg: "{{ docker_compose.stdout }}"

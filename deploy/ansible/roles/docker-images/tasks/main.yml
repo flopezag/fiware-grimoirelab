@@ -1,0 +1,15 @@
+########################################################
+# Pull the corresponding Docker Images for this machine
+########################################################
+- debug:
+    msg: "{{ message }}"
+
+- name: "Loop through docker images list"
+  debug:
+    msg: "An item: {{ item }}"
+  with_items: "{{ images }}"
+
+- name: Pull the Docker Images
+  shell:
+    cmd: docker pull {{ item }}
+  with_items: "{{ images }}"

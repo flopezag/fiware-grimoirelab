@@ -1,0 +1,42 @@
+###############################################
+# Configure the volumes for the Docker Engine
+###############################################
+- name: Create a new primary partition in /dev/vdb for the volume
+  parted:
+    device: /dev/vdb
+    number: 1
+    state: present
+  async: 600
+  poll: 60
+  register: fdisk1_sleeper
+
+- name: 'fdisk1 - check on async task'
+  async_status:
+    jid: "{{ fdisk1_sleeper.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 30
+
+- name: Create a ext4 filesystem on /dev/vdb1 and check disk blocks
+  filesystem:
+    fstype: ext4
+    dev: /dev/vdb1
+    force: yes
+  async: 2400
+  poll: 60
+  register: fdisk2_sleeper
+
+- name: 'fdisk2 - check on async task'
+  async_status:
+    jid: "{{ fdisk2_sleeper.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 30
+
+- name: Mount the partition in /var/lib/docker/volumes with mount and modify fstab
+  mount:
+    path: /var/lib/docker/volumes
+    src: /dev/vdb1
+    fstype: ext4
+    opts: defaults
+    state: mounted
