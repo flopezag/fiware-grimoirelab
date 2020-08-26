@@ -1,0 +1,5 @@
+---
+deploy_folder: <folder in which deploy the service>
+stackexchange_token: <StackOverFlow API Token>
+github_api_token: <GitHub API Token>
+setup_file: <Name of the setup.cfg file to be used>

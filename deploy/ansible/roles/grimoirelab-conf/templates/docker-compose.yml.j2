@@ -55,6 +55,7 @@ services:
         - ./conf/projects.json:/home/bitergia/conf/projects.json
         - ./conf/organizations.json:/home/bitergia/conf/organizations.json
         - ./conf/identities.yml:/home/bitergia/conf/identities.yml
+        - ./conf/menu.yml:/home/bitergia/conf/menu.yml
         - /tmp/:/home/bitergia/logs
       depends_on:
         - mariadb

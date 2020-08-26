@@ -35,4 +35,4 @@
   template: src=templates/{{setup_file}}.cfg.j2 dest={{ deploy_folder }}/conf/setup.cfg mode=0666
 
 - name: Distribute proper menu configuration file
-  template: src=templates/menu.yaml dest={{ deploy_folder }}/conf/menu.yaml mode=0666
+  template: src=templates/menu.yml dest={{ deploy_folder }}/conf/menu.yml mode=0666

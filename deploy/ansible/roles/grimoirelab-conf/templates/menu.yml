@@ -63,12 +63,3 @@
   menu:
   - name: Overview
     panel: panels/json/dockerhub.json
-
-- name: Apache
-  source: apache
-  icon: default.png
-  index-patterns:
-  - panels/json/apache-index-pattern.json
-  menu:
-  - name: Overview
-    panel: panels/json/apache.json

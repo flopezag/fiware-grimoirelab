@@ -5,7 +5,7 @@ min_update_delay = 60
 debug = false
 logs_dir = /home/bitergia/logs
 aliases_file = /home/bitergia/conf/aliases.json
-menu_file = /home/bitergia/conf/menu.yaml
+menu_file = /home/bitergia/conf/menu.yml
 
 [projects]
 projects_file = /home/bitergia/conf/projects.json
@@ -91,13 +91,13 @@ sleep-for-rate = true
 no-archive = true (suggested)
 studies = [enrich_extra_data:github]
 
-#[github]
-#api-token = {{github_api_token}}
-#enterprise-url = https://github.com
-#raw_index = github_demo_raw
-#sleep-for-rate = true
-#sleep-time = "300"
-#enriched_index = github_demo_enriched
+[github]
+api-token = {{github_api_token}}
+enterprise-url = https://github.com
+raw_index = github_demo_raw
+sleep-for-rate = true
+sleep-time = "300"
+enriched_index = github_demo_enriched
 
 [stackexchange]
 raw_index = stackexchange_demo_raw

@@ -12,7 +12,7 @@ variable "openstack_domain_name" {}
 
 variable "openstack_flavor" {}
 
-variable "openstack_grimoirelab_volume_id" {}
+# variable "openstack_grimoirelab_volume_id" {}
 
 variable "image" {
   default = "base_ubuntu_18.04"
