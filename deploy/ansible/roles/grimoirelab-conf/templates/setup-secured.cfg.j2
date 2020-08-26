@@ -1,0 +1,142 @@
+[general]
+short_name = "FIWARE OSS Tracker"
+update = true
+min_update_delay = 60
+debug = false
+logs_dir = /home/bitergia/logs
+aliases_file = /home/bitergia/conf/aliases.json
+menu_file = /home/bitergia/conf/menu.yaml
+
+[projects]
+projects_file = /home/bitergia/conf/projects.json
+
+[es_collection]
+url = https://admin:admin@elasticsearch:9200
+
+[es_enrichment]
+url = https://admin:admin@elasticsearch:9200
+autorefresh = true
+
+[sortinghat]
+host = mariadb
+user = root
+password =
+database = demo_sh
+load_orgs = true
+orgs_file = /home/bitergia/conf/organizations.json
+autoprofile = [github]
+matching = [email]
+sleep_for = 100
+unaffiliated_group = Unknown
+affiliate = true
+strict_mapping = false
+reset_on_load = false
+identities_file = [/home/bitergia/conf/identities.yml]
+identities_format = grimoirelab
+
+[panels]
+kibiter_time_from = now-5y
+kibiter_default_index = git
+kibiter_url = http://admin:admin@kibiter:5601
+kibiter_version = 6.1.4-5
+github-repos = true
+# github-comments (bool: False): Enable GitHub comments menu. Note that if enabled, the github2:issue and github2:pull sections in the setup.cfg and projects.json should be declared
+# github-events (bool: False): Enable GitHub events menu. Note that if enabled, the github:event section in the setup.cfg and projects.json should be declared
+
+[phases]
+collection = true
+identities = true
+enrichment = true
+panels = true
+
+[git]
+raw_index = git_demo_raw
+enriched_index = git_demo_enriched
+latest-items = true
+studies = [enrich_demography:git, enrich_areas_of_code:git, enrich_onion:git]
+
+[dockerhub]
+raw_index = dockerhub_raw
+enriched_index = dockerhub_enriched
+no-archive = true
+
+[github:issue]
+raw_index = github_raw
+enriched_index = github_enriched
+api-token = {{github_api_token}}
+category = issue
+sleep-for-rate = true
+no-archive = true
+studies = [enrich_onion:github,
+           enrich_geolocation:user,
+           enrich_geolocation:assignee,
+           enrich_extra_data:github,
+           enrich_backlog_analysis]
+
+[github:pull]
+raw_index = github-pull_raw
+enriched_index = github-pull_enriched
+api-token = {{github_api_token}}
+category = pull_request
+sleep-for-rate = true
+no-archive = true
+studies = [enrich_geolocation:user, enrich_geolocation:assignee, enrich_extra_data:github]
+
+[github:repo]
+raw_index = github-repo_raw
+enriched_index = github-repo_enriched
+api-token = {{github_api_token}}
+category = repository
+sleep-for-rate = true
+no-archive = true (suggested)
+studies = [enrich_extra_data:github]
+
+#[github]
+#api-token = {{github_api_token}}
+#enterprise-url = https://github.com
+#raw_index = github_demo_raw
+#sleep-for-rate = true
+#sleep-time = "300"
+#enriched_index = github_demo_enriched
+
+[stackexchange]
+raw_index = stackexchange_demo_raw
+enriched_index = stackexchange_demo_enriched
+api-token = {{stackexchange_token}}
+no-archive = true
+
+## studies based on enriched indexes
+
+[enrich_demography:git]
+
+[enrich_areas_of_code:git]
+in_index = git_demo_raw
+out_index = git-aoc_demo_enriched
+
+[enrich_onion:git]
+in_index = git
+out_index = git-onion_demo_enriched
+contribs_field = hash
+
+[enrich_onion:github]
+in_index_iss = github_issues_onion-src
+in_index_prs = github_prs_onion-src
+out_index_iss = github-issues-onion_enriched
+out_index_prs = github-prs-onion_enriched
+
+[enrich_geolocation:user]
+location_field = user_location
+geolocation_field = user_geolocation
+
+[enrich_geolocation:assignee]
+location_field = assignee_location
+geolocation_field = assignee_geolocation
+
+[enrich_extra_data:github]
+json_url = https://gist.githubusercontent.com/zhquan/bb48654bed8a835ab2ba9a149230b11a/raw/5eef38de508e0a99fa9772db8aef114042e82e47/bitergia-example.txt
+
+[enrich_backlog_analysis]
+out_index = github_enrich_backlog
+interval_days = 7
+reduced_labels = [bug,enhancement]
+map_label = [others, bugs, enhancements]

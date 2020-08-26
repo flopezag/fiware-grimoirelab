@@ -1,0 +1,38 @@
+#########################################
+# Install GrimoireLab files
+#########################################
+- name: Create target folder grimoirelab
+  file:
+    path: "{{ deploy_folder }}"
+    state: directory
+
+- name: Create target folder conf
+  file:
+    path: "{{ deploy_folder }}/conf"
+    state: directory
+
+- name: Distribute shell script file
+  template: src=templates/docker-compose.yml.j2 dest={{ deploy_folder }}/docker-compose.yml mode=0666
+
+# for the execution of Elasticsearch, we need to increase the size... sysctl -w vm.max_map_count=262144
+- name: Increase max virtual memory areas vm.max_map_count
+  shell: sysctl -w vm.max_map_count=262144
+
+# - name: Get owner email detail from Docker Image's LABELS
+- debug:
+    msg: "{{ message }}"
+
+- name: "Loop through docker images list"
+  debug:
+    msg: "An item: {{ item }}"
+  with_items: "{{ files }}"
+
+- name: Distribute configuration files
+  template: src=templates/{{ item }}.j2 dest={{ deploy_folder }}/conf/{{ item }} mode=0666
+  with_items: "{{ files }}"
+
+- name: Distribute setup.cfg file (secured or normal)
+  template: src=templates/{{setup_file}}.cfg.j2 dest={{ deploy_folder }}/conf/setup.cfg mode=0666
+
+- name: Distribute proper menu configuration file
+  template: src=templates/menu.yaml dest={{ deploy_folder }}/conf/menu.yaml mode=0666

@@ -1,0 +1,74 @@
+---
+- name: Git
+  source: git
+  icon: default.png
+  index-patterns:
+  - panels/json/git-index-pattern.json
+  - panels/json/git_areas_of_code-index-pattern.json
+  - panels/json/demographics-index-pattern.json
+  menu:
+  - name: Overview
+    panel: panels/json/git.json
+  - name: Attraction/Retention
+    panel: panels/json/git_demographics.json
+  - name: Areas of code
+    panel: panels/json/git_areas_of_code.json
+  - name: Lifecycle
+    panel: panels/json/lifecyle.json
+
+- name: GitHub PRs
+  source: github
+  icon: default.png
+  index-patterns:
+  - panels/json/github_issues-index-pattern.json
+  menu:
+  - name: Overview
+    panel: panels/json/github_pull_requests.json
+  - name: Backlog
+    panel: panels/json/github_pull_requests_backlog.json
+  - name: Timing
+    panel: panels/json/github_pull_requests_timing.json
+  - name: Efficiency
+    panel: panels/json/github_pull_requests_efficiency.json
+
+- name: GitHub Issues
+  source: github
+  icon: default.png
+  index-patterns:
+  - panels/json/github_issues-index-pattern.json
+  menu:
+  - name: Overview
+    panel: panels/json/github_issues.json
+  - name: Backlog
+    panel: panels/json/github_issues_backlog.json
+  - name: Timing
+    panel: panels/json/github_issues_timing.json
+  - name: Efficiency
+    panel: panels/json/github_issues_efficiency.json
+
+- name: StackOverflow
+  source: stackexchange
+  icon: default.png
+  index-patterns:
+  - panels/json/stackoverflow-index-pattern.json
+  menu:
+  - name: Overview
+    panel: panels/json/stackoverflow.json
+
+- name: DockerHub
+  source: dockerhub
+  icon: default.png
+  index-patterns:
+  - panels/json/dockerhub-index-pattern.json
+  menu:
+  - name: Overview
+    panel: panels/json/dockerhub.json
+
+- name: Apache
+  source: apache
+  icon: default.png
+  index-patterns:
+  - panels/json/apache-index-pattern.json
+  menu:
+  - name: Overview
+    panel: panels/json/apache.json

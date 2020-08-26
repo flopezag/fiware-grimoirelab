@@ -100,8 +100,38 @@ resource "openstack_compute_floatingip_associate_v2" "fip_grimoirelab" {
 #
 # Attaching volumes to the instances
 #
-resource "openstack_compute_volume_attach_v2" "va_grimoirelab" {
-  region = var.openstack_region
-  instance_id = openstack_compute_instance_v2.grimoirelab.id
-  volume_id   = var.openstack_grimoirelab_volume_id
+#resource "openstack_compute_volume_attach_v2" "va_grimoirelab" {
+#  region = var.openstack_region
+#  instance_id = openstack_compute_instance_v2.grimoirelab.id
+#  volume_id   = var.openstack_grimoirelab_volume_id
+#}
+
+locals {
+  template_keypair_init = templatefile("${path.module}/templates/keypair.tpl", {
+    keypair = openstack_compute_keypair_v2.gl_keypair.private_key
+  }
+  )
+
+  template_inventory_init = templatefile("${path.module}/templates/ansible_inventory.tpl", {
+    connection_strings = join("\n",
+           formatlist("%s ansible_ssh_host=%s ansible_ssh_user=ubuntu ansible_connection=ssh",
+                        openstack_compute_instance_v2.grimoirelab.name,
+                        openstack_compute_floatingip_v2.fip_grimoirelab.address))
+
+    list_nodes = openstack_compute_instance_v2.grimoirelab.name
+  }
+  )
+
+}
+
+resource "local_file" "keypair_file" {
+  content = local.template_keypair_init
+  filename = "../ansible/keypair"
+  file_permission = "0600"
+}
+
+resource "local_file" "ansible_inventory" {
+  content = local.template_inventory_init
+  filename = "../ansible/inventory.ini"
+  file_permission = "0600"
 }

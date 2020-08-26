@@ -1,32 +1,34 @@
 ---
 
 # need to execute firstly the docker-volume before install the docker-engine
-#- hosts: grimoirelab
-#  become: yes
-#  gather_facts: no
-#  roles:
+- hosts: grimoirelab
+  become: yes
+  gather_facts: no
+  roles:
 #     - docker-volume
-#     - docker-engine
+     - docker-engine
 
-#- hosts: grimoirelab
-#  become: yes
-#  gather_facts: no
-#  roles:
-#    - { role: docker-images,
-#        message: "Docker Images for GrimoireLab Virtual Machine",
-#        images: [
-#          "docker.elastic.co/elasticsearch/elasticsearch:7.9.0",
-#          "mariadb:10.0", "grimoirelab/hatstall:latest",
-#          "bitergia/kibiter:community-v6.8.6-3",
-#          "bitergia/mordred:latest"
-#        ]
-#    }
+- hosts: grimoirelab
+  become: yes
+  gather_facts: no
+  roles:
+    - { role: docker-images,
+        tags: docker-images,
+        message: "Docker Images for GrimoireLab Virtual Machine",
+        images: [
+          "docker.elastic.co/elasticsearch/elasticsearch:7.9.0",
+          "mariadb:10.0", "grimoirelab/hatstall:latest",
+          "bitergia/kibiter:community-v6.8.6-3",
+          "bitergia/mordred:latest"
+        ]
+    }
 
 - hosts: grimoirelab
   become: yes
   gather_facts: no
   roles:
     - { role: grimoirelab-conf,
+        tags: grimoirelab-conf,
         message: "GrimoireLab Configuration files",
         files: [
           "apache-hatstall.conf",
